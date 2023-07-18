@@ -110,5 +110,7 @@ public class gsonWriterStorageClass implements writerStorage {
             throw new RuntimeException(e);
         }
     }
+
+
 }
 

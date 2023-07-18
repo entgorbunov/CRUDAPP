@@ -1,6 +1,6 @@
 package com.gorbunov.crudapp.model;
 
-public enum status {
+public enum Status {
 
 
     ACTIVE,

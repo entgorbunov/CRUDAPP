@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class post {
+public class Post {
     private Integer id;
     private String content;
     private Date created;
     private Date updated;
-    private List<label> labels;
-    private com.gorbunov.crudapp.model.status status = com.gorbunov.crudapp.model.status.ACTIVE;
+    private List<Label> Labels;
+    private Status status = Status.ACTIVE;
 
 
     @Override
@@ -21,7 +21,7 @@ public class post {
                 ", content='" + content + '\'' +
                 ", created=" + created +
                 ", updated=" + updated +
-                ", labels=" + labels +
+                ", labels=" + Labels +
                 '}';
     }
 
@@ -29,7 +29,7 @@ public class post {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof post post)) return false;
+        if (!(o instanceof Post post)) return false;
         return getId() == post.getId() && Objects.equals(getContent(), post.getContent()) && Objects.equals(getCreated(), post.getCreated()) && Objects.equals(getUpdated(), post.getUpdated());
     }
 
@@ -70,19 +70,19 @@ public class post {
         this.updated = updated;
     }
 
-    public List<label> getLabels() {
-        return labels;
+    public List<Label> getLabels() {
+        return Labels;
     }
 
-    public void setLabels(List<label> labels) {
-        this.labels = labels;
+    public void setLabels(List<Label> Labels) {
+        this.Labels = Labels;
     }
 
-    public com.gorbunov.crudapp.model.status getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(com.gorbunov.crudapp.model.status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

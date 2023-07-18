@@ -2,10 +2,10 @@ package com.gorbunov.crudapp.model;
 
 import java.util.Objects;
 
-public class label {
+public class Label {
     private Integer id;
     private String name;
-    private com.gorbunov.crudapp.model.status status = com.gorbunov.crudapp.model.status.ACTIVE;
+    private Status status = Status.ACTIVE;
 
 
 
@@ -25,11 +25,11 @@ public class label {
         this.name = name;
     }
 
-    public com.gorbunov.crudapp.model.status getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(com.gorbunov.crudapp.model.status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -44,7 +44,7 @@ public class label {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof label label)) return false;
+        if (!(o instanceof Label label)) return false;
         return Objects.equals(getId(), label.getId()) && Objects.equals(getName(), label.getName());
     }
 

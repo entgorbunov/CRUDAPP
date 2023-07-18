@@ -1,47 +1,39 @@
 package com.gorbunov.crudapp.controller;
 
 
-import com.gorbunov.crudapp.model.writer;
-import com.gorbunov.crudapp.repository.gson.gsonWriterStorageClass;
-import com.gorbunov.crudapp.repository.writerStorage;
+import com.gorbunov.crudapp.model.Writer;
+import com.gorbunov.crudapp.repository.gson.GsonWriterStorageClass;
+import com.gorbunov.crudapp.repository.WriterStorage;
 
 import java.util.List;
 
-public class writerController {
-    private final writerStorage writerStorage = new gsonWriterStorageClass();
+public class WriterController {
+    private final WriterStorage writerStorage = new GsonWriterStorageClass();
 
-    public writer save(String firstName, String lastName) {
+    public Writer save(String firstName, String lastName) {
         String checkedFirstName = firstName.replaceAll("[^\\p{L}]", "");
         String checkedLastName = lastName.replaceAll("[^\\p{L}]", "");
         if (checkedFirstName.isEmpty() || checkedLastName.isEmpty()) return null;
         if (checkedFirstName.length() > 10 || checkedLastName.length() > 10) return null;
-        writer writer = new writer();
+        Writer writer = new Writer();
         writer.setFirstName(checkedFirstName);
         writer.setLastName(checkedLastName);
-        List<writer> allWriters = writerStorage.getAll();
-        if (allWriters.size() == 0) {
-            writer.setId(1);
-        } else {
-            int id = allWriters.get(allWriters.size() - 1).getId() + 1;
-            writer.setId(id);
-        }
-        writerStorage.save(writer);
-        return writer;
+        return writerStorage.save(writer);
     }
 
-    public writer getById(Integer id) {
+    public Writer getById(Integer id) {
         if (id <= 0) {
             return null;
         }
         return writerStorage.getById(id);
     }
 
-    public List<writer> getAll() {
+    public List<Writer> getAll() {
         return writerStorage.getAll();
     }
 
-    public writer update(writer writer) {
-        writer outdateWriter = getById(writer.getId());
+    public Writer update(Writer writer) {
+        Writer outdateWriter = getById(writer.getId());
         if (!writer.getFirstName().equals(outdateWriter.getFirstName())) {
             String checkedFirstName = writer.getFirstName().replaceAll("[^\\p{L}]", "");
             writer.setFirstName(checkedFirstName);

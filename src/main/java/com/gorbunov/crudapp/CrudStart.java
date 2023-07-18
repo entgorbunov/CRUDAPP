@@ -1,11 +1,11 @@
 package com.gorbunov.crudapp;
 
-import com.gorbunov.crudapp.view.mainView;
+import com.gorbunov.crudapp.view.MainView;
 
-public class crudStart {
+public class CrudStart {
     public static void main( String[] args )
     {
-        mainView mainView = new mainView();
+        MainView mainView = new MainView();
         mainView.Start();
     }
 }

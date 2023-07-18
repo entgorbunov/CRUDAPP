@@ -1,18 +1,18 @@
 package com.gorbunov.crudapp.view;
 
-import com.gorbunov.crudapp.controller.labelController;
-import com.gorbunov.crudapp.controller.postController;
-import com.gorbunov.crudapp.controller.writerController;
-import com.gorbunov.crudapp.model.label;
-import com.gorbunov.crudapp.model.post;
-import com.gorbunov.crudapp.model.writer;
+import com.gorbunov.crudapp.controller.LabelController;
+import com.gorbunov.crudapp.controller.PostController;
+import com.gorbunov.crudapp.controller.WriterController;
+import com.gorbunov.crudapp.model.Label;
+import com.gorbunov.crudapp.model.Post;
+import com.gorbunov.crudapp.model.Writer;
 
 import java.util.Scanner;
 
-public class writerView {
-    private final writerController writerController= new writerController();
-    private final postController postController = new postController();
-    private final labelController labelController = new labelController();
+public class WriterView {
+    private final WriterController writerController= new WriterController();
+    private final PostController postController = new PostController();
+    private final LabelController labelController = new LabelController();
     private final Scanner reader = new Scanner(System.in);
 
     public void handleRequest(){
@@ -71,7 +71,7 @@ public class writerView {
         System.out.print("Введите фамилию: ");
         String lastName = reader.nextLine();
 
-        writer writer = writerController.save(firstName, lastName);
+        Writer writer = writerController.save(firstName, lastName);
         if(writer == null)
             System.out.println("Неверный формат\n" +
                     "Возможно, строка пустая или превышает 10 символов, или введены цифры");
@@ -81,7 +81,7 @@ public class writerView {
 
     public void getWriterById(){
         int id = checkId();
-        writer writer = writerController.getById(id);
+        Writer writer = writerController.getById(id);
         if(writer == null)
             System.out.println("Писатель с таким id не существует");
         else
@@ -89,13 +89,13 @@ public class writerView {
     }
 
     public void getAllWriters(){
-        for(writer d: writerController.getAll())
+        for(Writer d: writerController.getAll())
             System.out.println(d);
     }
 
     public void updateWriter(){
         int id = checkId();
-        writer writer = writerController.getById(id);
+        Writer writer = writerController.getById(id);
         if(writer == null)
             System.out.println("Писатель с таким id не существует");
         else{
@@ -129,7 +129,7 @@ public class writerView {
                 }
                 case "post" -> {
                     int postId = checkId();
-                    post post = postController.getById(postId);
+                    Post post = postController.getById(postId);
                     if (post == null)
                         System.out.println("Пост с таким id не существует");
                     else {
@@ -140,7 +140,7 @@ public class writerView {
                 }
                 case "label" -> {
                     int labelId = checkId();
-                    label label = labelController.getById(labelId);
+                    Label label = labelController.getById(labelId);
                     if (label == null)
                         System.out.println("Лейбл с таким id не существует");
                     else {

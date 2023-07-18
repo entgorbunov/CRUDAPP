@@ -1,12 +1,12 @@
 package com.gorbunov.crudapp.view;
 
-import com.gorbunov.crudapp.controller.postController;
-import com.gorbunov.crudapp.model.post;
+import com.gorbunov.crudapp.controller.PostController;
+import com.gorbunov.crudapp.model.Post;
 
 import java.util.Scanner;
 
-public class postView {
-    private final postController postController = new postController();
+public class PostView {
+    private final PostController postController = new PostController();
     private final Scanner reader = new Scanner(System.in);
 
     public void handleRequest() {
@@ -66,7 +66,7 @@ public class postView {
         System.out.print("Напишите ваш текст: ");
         String content = reader.nextLine();
 
-        post post = postController.save(content);
+        Post post = postController.save(content);
         if (post == null)
             System.out.println("Неверный формат\n" +
                     "Убедитесь, что строка не пустая");
@@ -76,7 +76,7 @@ public class postView {
 
     public void getPostById() {
         int id = checkId();
-        post post = postController.getById(id);
+        Post post = postController.getById(id);
         if (post == null)
             System.out.println("Пост с таким id не существует");
         else
@@ -84,13 +84,13 @@ public class postView {
     }
 
     public void getAllPosts() {
-        for (post s : postController.getAll())
+        for (Post s : postController.getAll())
             System.out.println(s);
     }
 
     public void updatePost() {
         int id = checkId();
-        post post = postController.getById(id);
+        Post post = postController.getById(id);
         if (post == null)
             System.out.println("Пост с таким id не существует");
         else {

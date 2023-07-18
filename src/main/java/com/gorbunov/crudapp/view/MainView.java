@@ -2,10 +2,10 @@ package com.gorbunov.crudapp.view;
 
 import java.util.Scanner;
 
-public class mainView {
-    private final writerView writerView = new writerView();
-    private final postView postView = new postView();
-    private final labelView labelView = new labelView();
+public class MainView {
+    private final WriterView writerView = new WriterView();
+    private final PostView postView = new PostView();
+    private final LabelView labelView = new LabelView();
     private final Scanner reader = new Scanner(System.in);
 
     public void Start() {

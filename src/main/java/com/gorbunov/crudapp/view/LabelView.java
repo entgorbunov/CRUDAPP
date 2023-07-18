@@ -1,12 +1,12 @@
 package com.gorbunov.crudapp.view;
 
-import com.gorbunov.crudapp.controller.labelController;
-import com.gorbunov.crudapp.model.label;
+import com.gorbunov.crudapp.controller.LabelController;
+import com.gorbunov.crudapp.model.Label;
 
 import java.util.Scanner;
 
-public class labelView {
-    private final labelController labelController = new labelController();
+public class LabelView {
+    private final LabelController labelController = new LabelController();
     private final Scanner reader = new Scanner(System.in);
 
     public void handleRequest(){
@@ -66,7 +66,7 @@ public class labelView {
         System.out.print("Введите название: ");
         String name = reader.nextLine();
 
-        label label = labelController.save(name);
+        Label label = labelController.save(name);
         if(label == null)
             System.out.println("Неверный формат\n" +
                     "Убедитесь, что строка не пустая и не превышает 10 символов");
@@ -76,7 +76,7 @@ public class labelView {
 
     public void getLabelById(){
         int id = checkId();
-        label label = labelController.getById(id);
+        Label label = labelController.getById(id);
         if(label == null)
             System.out.println("Лейбл с таким id не существует");
         else
@@ -85,13 +85,13 @@ public class labelView {
     }
 
     public void getAllLabels(){
-        for(label s: labelController.getAll())
+        for(Label s: labelController.getAll())
             System.out.println(s);
     }
 
     public void updateLabel(){
         int id = checkId();
-        label label = labelController.getById(id);
+        Label label = labelController.getById(id);
         if(label == null)
             System.out.println("Пост с таким id не существует");
         else {
